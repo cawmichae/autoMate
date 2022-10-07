@@ -1,0 +1,19 @@
+{
+	"name": "automate",
+	"version": "1.0",
+	"manifest_version": 3,
+	"content_scripts": [
+		{
+			"matches": [
+				"<all_urls>"
+			],
+			"js": [
+				"client/automate.js"
+			]
+		}
+	],
+	"icons": {
+		"166": "icons/icon16.png",
+		"256": "icons/icon256.png"
+	}
+}
