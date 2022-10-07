@@ -1,0 +1,2 @@
+# autoMate
+Automates UI Interactions
