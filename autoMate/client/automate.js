@@ -47,21 +47,31 @@
     ADDRESS_FORM_POSTAL_CODE: '[formcontrolname="postalCode"]',
     ADDRESS_FORM_PHONE: '[formcontrolname="phone"]',
     ADDRESS_CONTINUE_BUTTON: '.cx-address-form-btns button[type=submit]',
-    DELIVERY_MODE_CONTINUE_BUTTON: '.cx-checkout-btns button[type=submit]',
+    DELIVERY_MODE_CONTINUE_BUTTON: 'cx-delivery-mode button.btn-primary',
     CREATE_ACOUNT_REGISTER_BUTTON: '.AccountPageTemplate button[type=submit]',
     LOGIN_USERNAME: 'input[type=email]',
     LOGIN_PASSWORD: 'input[type=password]',
     LOGIN_SIGNIN_BUTTON: 'button[type=submit]',
     ALLOW_COOKIES_BUTTON: '.anonymous-consent-banner button.btn-primary',
-	SIGN_IN_LINK: 'cx-login a',
-	MY_ACCOUNT: 'button[aria-label=My Account]'
+    SIGN_IN_LINK: 'cx-login a',
+    MY_ACCOUNT: 'button[aria-label=My Account]',
+    PAYMENT_DETAILS_CARD: '#card-type-select .ng-select-container',
+    PAYMENT_DETAILS_CARD_OPTION: '#card-type-select .ng-option:nth-of-type(4)',
+    ACCOUNT_HOLDER_NAME: 'input[formcontrolname=accountHolderName]',
+    CARD_NUMBER: 'input[formcontrolname=cardNumber]',
+    CARD_MONTH: '#month-select .ng-select-container',
+    CARD_MONTH_OPTION: '#month-select .ng-option:nth-of-type(4)',
+    CARD_YEAR: '#year-select .ng-select-container',
+    CARD_YEAR_OPTION: '#year-select .ng-option:nth-of-type(4)',
+    CARD_CVV: '[formcontrolname="cvn"]',
+    CARD_CONTINUE_BUTTON: 'cx-payment-form button[type=submit]',
   };
 
   const EMAIL_ADDRESS = `${new Date().getTime()}@test.com`;
   const PASSWORD = 'Password+1234';
 
   function waitForElement(selector) {
-    console.log('	Get element from selector:', selector);
+    console.log('	Get element from selector:', `document.querySelector('${selector}')`);
     return new Promise((resolve) => {
       if (document.querySelector(selector)) {
         return resolve(document.querySelector(selector));
@@ -83,15 +93,15 @@
 
   {
     waitForElement(L.SAP_ICON_HOME_LINK)
+      //   .then((element) => {
+      //     deleteAllCookies();
+      //     localStorage.clear();
+      //     console.log('Click on Home Icon');
+      //     element.click();
+      //     return waitForElement(L.ALLOW_COOKIES_BUTTON);
+      //   })
       .then((element) => {
-        deleteAllCookies();
-        localStorage.clear();
         console.log('Click on Home Icon');
-        element.click();
-        return waitForElement(L.ALLOW_COOKIES_BUTTON);
-      })
-      .then((element) => {
-        console.log('Click on Allow Cookies Button');
         element.click();
         return waitForElement(L.FIRST_PRODUCT);
       })
@@ -220,103 +230,112 @@
       .then((element) => {
         console.log('Click an Option on Title ng select', element);
         element.click();
-        // return waitForElement(L.FORM_FIRSTNAME);
+        return waitForElement(L.FORM_FIRSTNAME);
+      })
+      .then((element) => {
+        console.log('Set Firstname and fire input event');
+        element.value = 'John';
+        element.dispatchEvent(new Event('input'));
+        return waitForElement(L.FORM_LASTNAME);
+      })
+      .then((element) => {
+        console.log('Set Lastname and fire input event');
+        element.value = 'Smith';
+        element.dispatchEvent(new Event('input'));
+        return waitForElement(L.ADDRESS_FORM_LINE_1);
+      })
+      .then((element) => {
+        console.log('Set Address Line 1 and fire input event');
+        element.value = '1';
+        element.dispatchEvent(new Event('input'));
+        return waitForElement(L.ADDRESS_FORM_LINE_2);
+      })
+      .then((element) => {
+        console.log('Set Address Line 2 and fire input event');
+        element.value = 'High Street';
+        element.dispatchEvent(new Event('input'));
+        return waitForElement(L.ADDRESS_FORM_TOWN);
+      })
+      .then((element) => {
+        console.log('Set Town and fire input event');
+        element.value = 'Townsville';
+        element.dispatchEvent(new Event('input'));
+        return waitForElement(L.ADDRESS_FORM_POSTAL_CODE);
+      })
+      .then((element) => {
+        console.log('Set Postcode and fire input event');
+        element.value = '123456';
+        element.dispatchEvent(new Event('input'));
+        return waitForElement(L.ADDRESS_FORM_PHONE);
+      })
+      .then((element) => {
+        console.log('Set Phone and fire input event');
+        element.value = '555-1234-456';
+        element.dispatchEvent(new Event('input'));
+        return waitForElement(L.ADDRESS_CONTINUE_BUTTON);
+      })
+      .then((element) => {
+        console.log('Click Continue Button on Delivery Address', element);
+        element.click();
+        return waitForElement(L.DELIVERY_MODE_CONTINUE_BUTTON);
+      })
+      .then((element) => {
+        console.log('Click Continue Button on Delivery Mode', element);
+        element.click();
+        return waitForElement(L.PAYMENT_DETAILS_CARD);
+      })
+      .then((element) => {
+        console.log('Click Payment Options', element);
+        element.dispatchEvent(new Event('mousedown'));
+        return waitForElement(L.PAYMENT_DETAILS_CARD_OPTION);
+      })
+      .then((element) => {
+        console.log('Click an Option on Payment ng select', element);
+        element.click();
+        return waitForElement(L.ACCOUNT_HOLDER_NAME);
+      })
+      .then((element) => {
+        console.log('Set Account Holder Name and fire input event');
+        element.value = 'John Smith';
+        element.dispatchEvent(new Event('input'));
+        return waitForElement(L.CARD_NUMBER);
+      })
+      .then((element) => {
+        console.log('Set Card Number and fire input event');
+        element.value = '4111111111111111';
+        element.dispatchEvent(new Event('input'));
+        return waitForElement(L.CARD_MONTH);
+      })
+      .then((element) => {
+        console.log('Click Card Month', element);
+        element.dispatchEvent(new Event('mousedown'));
+        return waitForElement(L.CARD_MONTH_OPTION);
+      })
+      .then((element) => {
+        console.log('Click an Option on Card Month ng select', element);
+        element.click();
+        return waitForElement(L.CARD_YEAR);
+      })
+      .then((element) => {
+        console.log('Click Card Year', element);
+        element.dispatchEvent(new Event('mousedown'));
+        return waitForElement(L.CARD_YEAR_OPTION);
+      })
+      .then((element) => {
+        console.log('Click an Option on Card Year ng select', element);
+        element.click();
+        return waitForElement(L.CARD_CVV);
+      })
+      .then((element) => {
+        console.log('Set Card CVV and fire input event');
+        element.value = '123';
+        element.dispatchEvent(new Event('input'));
+        return waitForElement(L.CARD_CONTINUE_BUTTON);
+      })
+      .then((element) => {
+        console.log('Click Payment Details Submit', element);
+        element.click();
+        // return waitForElement(L.CARD_CVV);
       });
-    //   .then((element) => {
-    //     console.log('Set Address Line 1 and fire input event');
-    //     element.value = '1';
-    //     element.dispatchEvent(new Event('input'));
-    //     return waitForElement(L.ADDRESS_FORM_LINE_2);
-    //   })
-    //   .then((element) => {
-    //     console.log('Set Address Line 2 and fire input event');
-    //     element.value = 'High Street';
-    //     element.dispatchEvent(new Event('input'));
-    //     return waitForElement(L.ADDRESS_FORM_TOWN);
-    //   })
-    //   .then((element) => {
-    //     console.log('Set Address Town and fire input event');
-    //     element.value = 'Townsville';
-    //     element.dispatchEvent(new Event('input'));
-    //     return waitForElement(L.ADDRESS_FORM_POSTAL_CODE);
-    //   })
-    //   .then((element) => {
-    //     console.log('Set Address Postcode and fire input event');
-    //     element.value = '123456';
-    //     element.dispatchEvent(new Event('input'));
-    //     return waitForElement(L.ADDRESS_FORM_PHONE);
-    //   })
-    //   .then((element) => {
-    //     console.log('Set Address Phone and fire input event');
-    //     element.value = '555-123-4321';
-    //     element.dispatchEvent(new Event('input'));
-    //     return waitForElement(L.ADDRESS_CONTINUE_BUTTON);
-    //   })
-    //   .then((element) => {
-    //     console.log('Click on Address Continue button');
-    //     element.click();
-    //     return waitForElement(L.DELIVERY_MODE_CONTINUE_BUTTON);
-    //   })
-    //   .then((element) => {
-    //     console.log('Click on Delivery Mode Continue button');
-    //     element.click();
-    //     // return waitForElement(L.DELIVER_MODE_CONTINUE_BUTTON);
-    //   });
-
-    //   .then((element) => {
-    //     console.log('Set email and fire input event');
-    //     element.value = EMAIL_ADDRESS;
-    //     element.dispatchEvent(new Event('input'));
-    //     return waitForElement(L.FORM_PASSWORD);
-    //   })
-    //   .then((element) => {
-    //     console.log('Set password and fire input event');
-    //     element.value = PASSWORD;
-    //     element.dispatchEvent(new Event('input'));
-    //     return waitForElement(L.FORM_CONFIRM_PASSWORD);
-    //   })
-    //   .then((element) => {
-    //     console.log('Set confirm password and fire input event');
-    //     element.value = PASSWORD;
-    //     element.dispatchEvent(new Event('input'));
-    //     return waitForElement(L.FORM_NEWSLETTER);
-    //   })
-    //   .then((element) => {
-    //     console.log('Click Newsletter radio');
-    //     element.click();
-    //     return waitForElement(L.FORM_TANDC);
-    //   })
-    //   .then((element) => {
-    //     console.log('Click T and C radio');
-    //     element.click();
-    //     return waitForElement(L.SUBMIT_REGISTRATION_FORM);
-    //   })
-    //   .then((element) => {
-    //     console.log('Click Submit button');
-    //     element.click();
-    //     return waitForElement(L.SIGNIN_USERNAME);
-    //   })
-    //   .then((element) => {
-    //     console.log('Set Username and fire input event');
-    //     element.value = EMAIL_ADDRESS;
-    //     element.dispatchEvent(new Event('input'));
-    //     return waitForElement(L.SIGNIN_PASSWORD);
-    //   })
-    //   .then((element) => {
-    //     console.log('Set Password and fire input event');
-    //     element.value = PASSWORD;
-    //     element.dispatchEvent(new Event('input'));
-    //     return waitForElement(L.SIGN_IN_BUTTON);
-    //   })
-    //   .then((element) => {
-    //     console.log('Click Sign In button');
-    //     element.click();
-    //     return waitForElement(L.SELECT);
-    //   })
-    //   .then((element) => {
-    //     console.log('Click Select');
-    //     element.click();
-    //     return waitForElement(L.SELECT);
-    //   });
   }
 })();
