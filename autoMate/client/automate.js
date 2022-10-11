@@ -75,6 +75,7 @@
       '	Get element from selector:',
       `document.querySelector('${selector}')`,
     );
+    console.log('---------------');
     return new Promise((resolve) => {
       if (document.querySelector(selector)) {
         return resolve(document.querySelector(selector));
@@ -289,8 +290,13 @@
       element.dispatchEvent(new Event('input'));
 
       element = await waitForElement(L.CARD_CONTINUE_BUTTON);
-      console.log('Click Payment Details Submit', element);
-      element.click();
+      console.log('Click Payment Details Submit', element.toString());
+
+      // Don't know why we need this, but we do!
+      // https://stackoverflow.com/questions/779379/why-is-settimeoutfn-0-sometimes-useful
+      setTimeout(function () {
+        element.click();
+      }, 0);
     }
 
     runJourney();
