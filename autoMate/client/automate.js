@@ -65,6 +65,7 @@
     CARD_YEAR_OPTION: '#year-select .ng-option:nth-of-type(4)',
     CARD_CVV: '[formcontrolname="cvn"]',
     CARD_CONTINUE_BUTTON: 'cx-payment-form button[type=submit]',
+	VIEW_CART: `cx-added-to-cart-dialog div.cx-dialog-buttons a.btn-primary`,
   };
 
   const EMAIL_ADDRESS = `${new Date().getTime()}@test.com`;
@@ -124,179 +125,181 @@
       console.log('Click on Add To Cart');
       element.click();
 
-      element = await waitForElement(L.PROCEED_TO_CHECKOUT_BUTTON);
-      console.log('Click on Proceed To Checkout button', element);
+	  console.clear();
+	  console.log('Check if Stores request is made');
+      element = await waitForElement(L.VIEW_CART);
+      console.log('Click on View Cart Link', element);
       element.click();
 
-      element = await waitForElement(L.REGISTER_BUTTON);
-      console.log('Click on Register button', element);
-      element.click();
+    //   element = await waitForElement(L.REGISTER_BUTTON);
+    //   console.log('Click on Register button', element);
+    //   element.click();
 
-      element = await waitForElement(L.ADDRESS_FORM_TITLE);
-      console.log('Click Title ng select', element);
-      element.dispatchEvent(new Event('mousedown'));
+    //   element = await waitForElement(L.ADDRESS_FORM_TITLE);
+    //   console.log('Click Title ng select', element);
+    //   element.dispatchEvent(new Event('mousedown'));
 
-      element = await waitForElement(L.ADDRESS_FORM_TITLE_OPTION);
-      console.log('Click an Option on Title ng select', element);
-      element.click();
+    //   element = await waitForElement(L.ADDRESS_FORM_TITLE_OPTION);
+    //   console.log('Click an Option on Title ng select', element);
+    //   element.click();
 
-      element = await waitForElement(L.FORM_FIRSTNAME);
-      console.log('Set first name and fire input event');
-      element.value = 'John';
-      element.dispatchEvent(new Event('input'));
+    //   element = await waitForElement(L.FORM_FIRSTNAME);
+    //   console.log('Set first name and fire input event');
+    //   element.value = 'John';
+    //   element.dispatchEvent(new Event('input'));
 
-      element = await waitForElement(L.FORM_LASTNAME);
-      console.log('Set last name and fire input event');
-      element.value = 'Smith';
-      element.dispatchEvent(new Event('input'));
+    //   element = await waitForElement(L.FORM_LASTNAME);
+    //   console.log('Set last name and fire input event');
+    //   element.value = 'Smith';
+    //   element.dispatchEvent(new Event('input'));
 
-      element = await waitForElement(L.FORM_EMAIL);
-      console.log('Set Email and fire input event');
-      element.value = EMAIL_ADDRESS;
-      element.dispatchEvent(new Event('input'));
+    //   element = await waitForElement(L.FORM_EMAIL);
+    //   console.log('Set Email and fire input event');
+    //   element.value = EMAIL_ADDRESS;
+    //   element.dispatchEvent(new Event('input'));
 
-      element = await waitForElement(L.FORM_PASSWORD);
-      console.log('Set Password and fire input event');
-      element.value = PASSWORD;
-      element.dispatchEvent(new Event('input'));
+    //   element = await waitForElement(L.FORM_PASSWORD);
+    //   console.log('Set Password and fire input event');
+    //   element.value = PASSWORD;
+    //   element.dispatchEvent(new Event('input'));
 
-      element = await waitForElement(L.FORM_CONFIRM_PASSWORD);
-      console.log('Set Confirm Password and fire input event');
-      element.value = PASSWORD;
-      element.dispatchEvent(new Event('input'));
+    //   element = await waitForElement(L.FORM_CONFIRM_PASSWORD);
+    //   console.log('Set Confirm Password and fire input event');
+    //   element.value = PASSWORD;
+    //   element.dispatchEvent(new Event('input'));
 
-      element = await waitForElement(L.FORM_TANDC);
-      console.log('Click T and C');
-      element.click();
+    //   element = await waitForElement(L.FORM_TANDC);
+    //   console.log('Click T and C');
+    //   element.click();
 
-      element = await waitForElement(L.FORM_NEWSLETTER);
-      console.log('Click Newsletter');
-      element.click();
+    //   element = await waitForElement(L.FORM_NEWSLETTER);
+    //   console.log('Click Newsletter');
+    //   element.click();
 
-      element = await waitForElement(L.CREATE_ACOUNT_REGISTER_BUTTON);
-      console.log('Click Register Button');
-      element.click();
+    //   element = await waitForElement(L.CREATE_ACOUNT_REGISTER_BUTTON);
+    //   console.log('Click Register Button');
+    //   element.click();
 
-      element = await waitForElement(L.LOGIN_USERNAME);
-      console.log('Enter username');
-      element.value = EMAIL_ADDRESS;
-      element.dispatchEvent(new Event('input'));
+    //   element = await waitForElement(L.LOGIN_USERNAME);
+    //   console.log('Enter username');
+    //   element.value = EMAIL_ADDRESS;
+    //   element.dispatchEvent(new Event('input'));
 
-      element = await waitForElement(L.LOGIN_PASSWORD);
-      console.log('Enter password');
-      element.value = PASSWORD;
-      element.dispatchEvent(new Event('input'));
+    //   element = await waitForElement(L.LOGIN_PASSWORD);
+    //   console.log('Enter password');
+    //   element.value = PASSWORD;
+    //   element.dispatchEvent(new Event('input'));
 
-      element = await waitForElement(L.LOGIN_SIGNIN_BUTTON);
-      console.log('Click Sign In Button');
-      element.click();
+    //   element = await waitForElement(L.LOGIN_SIGNIN_BUTTON);
+    //   console.log('Click Sign In Button');
+    //   element.click();
 
-      element = await waitForElement(L.ADDRESS_FORM_COUNTRY);
-      console.log('Click Country ng select', element);
-      element.dispatchEvent(new Event('mousedown'));
+    //   element = await waitForElement(L.ADDRESS_FORM_COUNTRY);
+    //   console.log('Click Country ng select', element);
+    //   element.dispatchEvent(new Event('mousedown'));
 
-      element = await waitForElement(L.ADDRESS_FORM_COUNTRY_OPTION);
-      console.log('Click an Option on Country ng select', element);
-      element.click();
+    //   element = await waitForElement(L.ADDRESS_FORM_COUNTRY_OPTION);
+    //   console.log('Click an Option on Country ng select', element);
+    //   element.click();
 
-      element = await waitForElement(L.ADDRESS_FORM_TITLE);
-      console.log('Click Title ng select', element);
-      element.dispatchEvent(new Event('mousedown'));
+    //   element = await waitForElement(L.ADDRESS_FORM_TITLE);
+    //   console.log('Click Title ng select', element);
+    //   element.dispatchEvent(new Event('mousedown'));
 
-      element = await waitForElement(L.ADDRESS_FORM_TITLE_OPTION);
-      console.log('Click an Option on Title ng select', element);
-      element.click();
+    //   element = await waitForElement(L.ADDRESS_FORM_TITLE_OPTION);
+    //   console.log('Click an Option on Title ng select', element);
+    //   element.click();
 
-      element = await waitForElement(L.FORM_FIRSTNAME);
-      console.log('Set Firstname and fire input event');
-      element.value = 'John';
-      element.dispatchEvent(new Event('input'));
+    //   element = await waitForElement(L.FORM_FIRSTNAME);
+    //   console.log('Set Firstname and fire input event');
+    //   element.value = 'John';
+    //   element.dispatchEvent(new Event('input'));
 
-      element = await waitForElement(L.FORM_LASTNAME);
-      console.log('Set Lastname and fire input event');
-      element.value = 'Smith';
-      element.dispatchEvent(new Event('input'));
+    //   element = await waitForElement(L.FORM_LASTNAME);
+    //   console.log('Set Lastname and fire input event');
+    //   element.value = 'Smith';
+    //   element.dispatchEvent(new Event('input'));
 
-      element = await waitForElement(L.ADDRESS_FORM_LINE_1);
-      console.log('Set Address Line 1 and fire input event');
-      element.value = '1';
-      element.dispatchEvent(new Event('input'));
+    //   element = await waitForElement(L.ADDRESS_FORM_LINE_1);
+    //   console.log('Set Address Line 1 and fire input event');
+    //   element.value = '1';
+    //   element.dispatchEvent(new Event('input'));
 
-      element = await waitForElement(L.ADDRESS_FORM_LINE_2);
-      console.log('Set Address Line 2 and fire input event');
-      element.value = 'High Street';
-      element.dispatchEvent(new Event('input'));
+    //   element = await waitForElement(L.ADDRESS_FORM_LINE_2);
+    //   console.log('Set Address Line 2 and fire input event');
+    //   element.value = 'High Street';
+    //   element.dispatchEvent(new Event('input'));
 
-      element = await waitForElement(L.ADDRESS_FORM_TOWN);
-      console.log('Set Town and fire input event');
-      element.value = 'Townsville';
-      element.dispatchEvent(new Event('input'));
+    //   element = await waitForElement(L.ADDRESS_FORM_TOWN);
+    //   console.log('Set Town and fire input event');
+    //   element.value = 'Townsville';
+    //   element.dispatchEvent(new Event('input'));
 
-      element = await waitForElement(L.ADDRESS_FORM_POSTAL_CODE);
-      console.log('Set Postcode and fire input event');
-      element.value = '123456';
-      element.dispatchEvent(new Event('input'));
+    //   element = await waitForElement(L.ADDRESS_FORM_POSTAL_CODE);
+    //   console.log('Set Postcode and fire input event');
+    //   element.value = '123456';
+    //   element.dispatchEvent(new Event('input'));
 
-      element = await waitForElement(L.ADDRESS_FORM_PHONE);
-      console.log('Set Phone and fire input event');
-      element.value = '555-1234-456';
-      element.dispatchEvent(new Event('input'));
+    //   element = await waitForElement(L.ADDRESS_FORM_PHONE);
+    //   console.log('Set Phone and fire input event');
+    //   element.value = '555-1234-456';
+    //   element.dispatchEvent(new Event('input'));
 
-      element = await waitForElement(L.ADDRESS_CONTINUE_BUTTON);
-      console.log('Click Continue Button on Delivery Address', element);
-      element.click();
+    //   element = await waitForElement(L.ADDRESS_CONTINUE_BUTTON);
+    //   console.log('Click Continue Button on Delivery Address', element);
+    //   element.click();
 
-      element = await waitForElement(L.DELIVERY_MODE_CONTINUE_BUTTON);
-      console.log('Click Continue Button on Delivery Mode', element);
-      element.click();
+    //   element = await waitForElement(L.DELIVERY_MODE_CONTINUE_BUTTON);
+    //   console.log('Click Continue Button on Delivery Mode', element);
+    //   element.click();
 
-      element = await waitForElement(L.PAYMENT_DETAILS_CARD);
-      console.log('Click Payment Options', element);
-      element.dispatchEvent(new Event('mousedown'));
+    //   element = await waitForElement(L.PAYMENT_DETAILS_CARD);
+    //   console.log('Click Payment Options', element);
+    //   element.dispatchEvent(new Event('mousedown'));
 
-      element = await waitForElement(L.PAYMENT_DETAILS_CARD_OPTION);
-      console.log('Click an Option on Payment ng select', element);
-      element.click();
+    //   element = await waitForElement(L.PAYMENT_DETAILS_CARD_OPTION);
+    //   console.log('Click an Option on Payment ng select', element);
+    //   element.click();
 
-      element = await waitForElement(L.ACCOUNT_HOLDER_NAME);
-      console.log('Set Account Holder Name and fire input event');
-      element.value = 'John Smith';
-      element.dispatchEvent(new Event('input'));
+    //   element = await waitForElement(L.ACCOUNT_HOLDER_NAME);
+    //   console.log('Set Account Holder Name and fire input event');
+    //   element.value = 'John Smith';
+    //   element.dispatchEvent(new Event('input'));
 
-      element = await waitForElement(L.CARD_NUMBER);
-      console.log('Set Card Number and fire input event');
-      element.value = '4111111111111111';
-      element.dispatchEvent(new Event('input'));
+    //   element = await waitForElement(L.CARD_NUMBER);
+    //   console.log('Set Card Number and fire input event');
+    //   element.value = '4111111111111111';
+    //   element.dispatchEvent(new Event('input'));
 
-      element = await waitForElement(L.CARD_MONTH);
-      console.log('Click Card Month', element);
-      element.dispatchEvent(new Event('mousedown'));
+    //   element = await waitForElement(L.CARD_MONTH);
+    //   console.log('Click Card Month', element);
+    //   element.dispatchEvent(new Event('mousedown'));
 
-      element = await waitForElement(L.CARD_MONTH_OPTION);
-      console.log('Click an Option on Card Month ng select', element);
-      element.click();
+    //   element = await waitForElement(L.CARD_MONTH_OPTION);
+    //   console.log('Click an Option on Card Month ng select', element);
+    //   element.click();
 
-      element = await waitForElement(L.CARD_YEAR);
-      console.log('Click Card Year', element);
-      element.dispatchEvent(new Event('mousedown'));
+    //   element = await waitForElement(L.CARD_YEAR);
+    //   console.log('Click Card Year', element);
+    //   element.dispatchEvent(new Event('mousedown'));
 
-      element = await waitForElement(L.CARD_YEAR_OPTION);
-      console.log('Click an Option on Card Year ng select', element);
-      element.click();
+    //   element = await waitForElement(L.CARD_YEAR_OPTION);
+    //   console.log('Click an Option on Card Year ng select', element);
+    //   element.click();
 
-      element = await waitForElement(L.CARD_CVV);
-      console.log('Set Card CVV and fire input event');
-      element.value = '123';
-      element.dispatchEvent(new Event('input'));
+    //   element = await waitForElement(L.CARD_CVV);
+    //   console.log('Set Card CVV and fire input event');
+    //   element.value = '123';
+    //   element.dispatchEvent(new Event('input'));
 
-      element = await waitForElement(L.CARD_CONTINUE_BUTTON);
-      console.log('Click Payment Details Submit', element.toString());
+    //   element = await waitForElement(L.CARD_CONTINUE_BUTTON);
+    //   console.log('Click Payment Details Submit', element.toString());
 
-      // Don't know why we need this, but we do!
-      // https://stackoverflow.com/questions/779379/why-is-settimeoutfn-0-sometimes-useful
-      setTimeout(function () {
-        element.click();
-      }, 0);
+    //   // Don't know why we need this, but we do!
+    //   // https://stackoverflow.com/questions/779379/why-is-settimeoutfn-0-sometimes-useful
+    //   setTimeout(function () {
+    //     element.click();
+    //   }, 0);
     }
 
     runJourney();
